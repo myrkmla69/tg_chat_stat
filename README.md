@@ -6,6 +6,7 @@ To analyze chats, you need to export your data (only personal chats without file
 
 There is some list of tasks is needed to do:
 
+- [x] Search and select export files
 - [x] The number of messages from each of the participants and in total;
 - [ ] Number of characters in messages from each of the partocopants and in total;
 - [ ] Number of individual words;
