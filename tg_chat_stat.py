@@ -1,37 +1,10 @@
 # coding=utf-8
 
-import os
-import re
 import json
-import time
 import chat_stat_lib as lib
 
 # Path to file with data from Telegram
-path_to_file = "C:/Users/Андрей/Downloads/Telegram Desktop/DataExport_12_01_2020/result.json"
-
-if os.name == "nt":
-    tg_download_path = lib.get_download_path() + "\Telegram Desktop" # Директория загрузок Telegram по-умолчанию
-    tg_download_dirs = dict() # Список директорий
-    tg_dir_count = 0 # Счетчик директорий
-
-    if os.path.exists(tg_download_path): # Если данная директория существует
-        for directory in os.listdir(tg_download_path): 
-            if os.path.isdir(tg_download_path + "\\" + directory): # Отбираем только директории
-                if re.match("DataExport_+", directory): # Если это директории экспорта данных
-                    if os.listdir(tg_download_path + "\\" + directory).count("result.json") == 1:
-                        tg_dir_count += 1
-                        tg_download_dirs[tg_dir_count] = directory # Добавляем в список
-
-    print(f"Найдено файлов экспорта (json): {tg_dir_count}.")
-    print("Выберите экспорт:")
-
-    for i in range(1, tg_dir_count + 1):
-        print(str(i) + ". " + tg_download_dirs[i])
-
-    selected_export_file = int(input("-> "))
-
-    if selected_export_file in range(1, tg_dir_count):
-        path_to_file = tg_download_path + "\\" + tg_download_dirs[selected_export_file] + "\\result.json"
+path_to_file = lib.get_path_to_file()
 
 with open(path_to_file, "r", encoding="utf8") as file:
     data = json.load(file)

@@ -1,6 +1,8 @@
 # coding=utf-8
 
 import os
+import re
+import time
 
 # Количество сообщений от пользователя (from_id)
 def count_msg_from(from_id, msg_dict):
@@ -48,3 +50,31 @@ def get_download_path():
         return location
     else:
         return os.path.join(os.path.expanduser('~'), 'downloads')
+
+def get_path_to_file():
+    if os.name == "nt":
+        tg_download_path = get_download_path() + "\Telegram Desktop" # Директория загрузок Telegram по-умолчанию
+        tg_download_dirs = dict() # Список директорий
+        tg_dir_count = 0 # Счетчик директорий
+
+        if os.path.exists(tg_download_path): # Если данная директория существует
+            for directory in os.listdir(tg_download_path): 
+                if os.path.isdir(tg_download_path + "\\" + directory): # Отбираем только директории
+                    if re.match("DataExport_+", directory): # Если это директории экспорта данных
+                        if os.listdir(tg_download_path + "\\" + directory).count("result.json") == 1:
+                            tg_dir_count += 1
+                            tg_download_dirs[tg_dir_count] = directory # Добавляем в список
+
+        print(f"Найдено файлов экспорта (json): {tg_dir_count}.")
+        if tg_dir_count > 0:
+            print("Выберите экспорт:")
+
+            for i in range(1, tg_dir_count + 1):
+                print(str(i) + ". " + tg_download_dirs[i])
+
+            selected_export_file = int(input("-> "))
+            
+            if selected_export_file in range(1, tg_dir_count + 1):
+                return tg_download_path + "\\" + tg_download_dirs[selected_export_file] + "\\result.json"
+        else:
+            return
