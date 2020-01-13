@@ -17,28 +17,13 @@ def count_msg_from(from_id, msg_dict):
 
 # Количество символов в сообщениях от пользователя (from_id)
 def count_msg_symbols(from_id, msg_dict):
-    pass 
+    pass
 
 # Получить from_id по имени (названию чата)
 def get_from_id(name, msg_dict):
     pass
 
-# Получение корректного сообщения о количестве сообщений =)
-def get_msg_count(count):
-    if count is None:
-        return ""
-
-    str_count = str(count)
-    last_number = int(str_count[len(str_count) - 1])
-
-    if last_number in range(2, 4):
-        return "сообщения"
-    elif last_number in range(5, 9) or last_number == 0:
-        return "сообщений"
-    elif last_number == 1:
-        return "сообщение"
-
-
+# Путь к папке Загрузки текущего пользователя
 def get_download_path():
     """Returns the default downloads path for linux or windows"""
     if os.name == 'nt':
@@ -51,6 +36,7 @@ def get_download_path():
     else:
         return os.path.join(os.path.expanduser('~'), 'downloads')
 
+# Путь к файлу экспорта Telegram (json)
 def get_path_to_file():
     if os.name == "nt":
         tg_download_path = get_download_path() + "\Telegram Desktop" # Директория загрузок Telegram по-умолчанию
@@ -77,4 +63,4 @@ def get_path_to_file():
             if selected_export_file in range(1, tg_dir_count + 1):
                 return tg_download_path + "\\" + tg_download_dirs[selected_export_file] + "\\result.json"
         else:
-            return
+            return ""
