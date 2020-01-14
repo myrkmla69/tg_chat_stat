@@ -14,6 +14,7 @@ def count_msg_from(from_id, msg_dict):
 
     return msg_counter
 
+# Количество символов в чате
 def count_chat_sybmols(msg_dict):
     symbols_count = 0
     for i in range(0, len(msg_dict) - 1):
@@ -34,6 +35,44 @@ def get_from_id(name, msg_dict):
     for i in range(0, len(msg_dict) - 1):
         if msg_dict[i]["from"] == name:
             return msg_dict[i]["from_id"]
+
+# Количество голосовых сообщений
+def count_voice_msgs(msg_dict):
+    audio_msg_count = 0
+    for i in range(0, len(msg_dict) - 1):
+        if "media_type" in msg_dict[i]:
+            if msg_dict[i]["media_type"] == "voice_message":
+                audio_msg_count += 1
+    return audio_msg_count
+
+# Количество голосовых сообщений
+def count_voice_msgs_from(from_id, msg_dict):
+    audio_msg_count = 0
+    for i in range(0, len(msg_dict) - 1):
+        if msg_dict[i]["from_id"] == from_id:
+            if "media_type" in msg_dict[i]:
+                if msg_dict[i]["media_type"] == "voice_message":
+                    audio_msg_count += 1
+    return audio_msg_count
+
+# Количество видео-сообщений
+def count_round_video_msgs(msg_dict):
+    video_msg_count = 0
+    for i in range(0, len(msg_dict) - 1):
+        if "media_type" in msg_dict[i]:
+            if msg_dict[i]["media_type"] == "video_message":
+                video_msg_count += 1
+    return video_msg_count
+
+# Количество видео-сообщений от пользователя (from_id)
+def count_round_video_msgs_from(from_id, msg_dict):
+    video_msg_count = 0
+    for i in range(0, len(msg_dict) - 1):
+        if msg_dict[i]["from_id"] == from_id:
+            if "media_type" in msg_dict[i]:
+                if msg_dict[i]["media_type"] == "video_message":
+                    video_msg_count += 1
+    return video_msg_count
 
 # Путь к папке Загрузки текущего пользователя
 def get_download_path():

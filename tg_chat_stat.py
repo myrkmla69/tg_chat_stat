@@ -52,10 +52,16 @@ if path_to_file != "":
             print("\nСтатистика по выбранному чату (", chat_names[int(selected_chat)]["name"], "):\n")
             print("Всего сообщений:", selected_chat_count)
             print("Всего символов:", lib.count_chat_sybmols(selected_chat_dict))
-            print("Количество символов от " + user["first_name"] + " " + user["last_name"] + ":", lib.count_msg_symbols_from(user["user_id"], selected_chat_dict))
-            print("Количество символов от " + chat_list[selected_chat_number]["name"] + ":", lib.count_msg_symbols_from(chat_names[int(selected_chat)]["from_id"], selected_chat_dict))
+            print("Всего голосовых сообщений:", lib.count_voice_msgs(selected_chat_dict))
+            print("Всего круглых-видео-сообщений:", lib.count_round_video_msgs(selected_chat_dict))
             print("Количество сообщений от " + user["first_name"] + " " + user["last_name"] + ":", lib.count_msg_from(user["user_id"], selected_chat_dict))
             print("Количество сообщений от " + chat_list[selected_chat_number]["name"] + ":", selected_chat_count - lib.count_msg_from(user["user_id"], selected_chat_dict))
+            print("Количество символов от " + user["first_name"] + " " + user["last_name"] + ":", lib.count_msg_symbols_from(user["user_id"], selected_chat_dict))
+            print("Количество символов от " + chat_list[selected_chat_number]["name"] + ":", lib.count_msg_symbols_from(chat_names[int(selected_chat)]["from_id"], selected_chat_dict))
+            print("Количество голосовых сообщений от " + user["first_name"] + " " + user["last_name"] + ":", lib.count_voice_msgs_from(user["user_id"], selected_chat_dict))
+            print("Количество голосовых сообщений от " + chat_list[selected_chat_number]["name"] + ":", lib.count_voice_msgs_from(chat_names[int(selected_chat)]["from_id"], selected_chat_dict))
+            print("Количество круглых-видео-сообщений от " + user["first_name"] + " " + user["last_name"] + ":", lib.count_round_video_msgs_from(user["user_id"], selected_chat_dict))
+            print("Количество круглых-видео-сообщений от " + chat_list[selected_chat_number]["name"] + ":", lib.count_round_video_msgs_from(chat_names[int(selected_chat)]["from_id"], selected_chat_dict))
 
         elif int(_input) == 0:
             is_active = False
