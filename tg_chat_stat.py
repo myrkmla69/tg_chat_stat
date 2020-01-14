@@ -17,12 +17,14 @@ if path_to_file != "":
     chat_names = dict() # Список чатов
     counter = 0 # Счетчик чатов
 
+    # Получаем названия чатов и заносим в другой список
     for i in range(0, len(chat_list) - 1):
         if chat_list[i]["type"] == "personal_chat": # Если это ЛС (диалог)
             counter += 1
             chat_names[counter] = {
                 "number": i,
-                "name": chat_list[i]["name"] # Получаем названия чатов и заносим в другой список
+                "name": chat_list[i]["name"],
+                "from_id": lib.get_from_id(chat_list[i]["name"], chat_list[i]["messages"])
             }
 
     is_active = True
@@ -49,6 +51,9 @@ if path_to_file != "":
 
             print("\nСтатистика по выбранному чату (", chat_names[int(selected_chat)]["name"], "):\n")
             print("Всего сообщений:", selected_chat_count)
+            print("Всего символов:", lib.count_chat_sybmols(selected_chat_dict))
+            print("Количество символов от " + user["first_name"] + " " + user["last_name"] + ":", lib.count_msg_symbols_from(user["user_id"], selected_chat_dict))
+            print("Количество символов от " + chat_list[selected_chat_number]["name"] + ":", lib.count_msg_symbols_from(chat_names[int(selected_chat)]["from_id"], selected_chat_dict))
             print("Количество сообщений от " + user["first_name"] + " " + user["last_name"] + ":", lib.count_msg_from(user["user_id"], selected_chat_dict))
             print("Количество сообщений от " + chat_list[selected_chat_number]["name"] + ":", selected_chat_count - lib.count_msg_from(user["user_id"], selected_chat_dict))
 

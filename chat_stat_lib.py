@@ -9,19 +9,31 @@ def count_msg_from(from_id, msg_dict):
     msg_counter = 0
     
     for i in range(0, len(msg_dict) - 1):
-        message = msg_dict[i]
-        if message["from_id"] == from_id:
+        if msg_dict[i]["from_id"] == from_id:
             msg_counter += 1
 
     return msg_counter
 
+def count_chat_sybmols(msg_dict):
+    symbols_count = 0
+    for i in range(0, len(msg_dict) - 1):
+        if msg_dict[i]["text"] != "":
+            symbols_count += len(msg_dict[i]["text"])
+    return symbols_count
+
 # Количество символов в сообщениях от пользователя (from_id)
-def count_msg_symbols(from_id, msg_dict):
-    pass
+def count_msg_symbols_from(from_id, msg_dict):
+    symbols_count = 0
+    for i in range(0, len(msg_dict) - 1):
+        if msg_dict[i]["text"] != "" and msg_dict[i]["from_id"] == from_id:
+            symbols_count += len(msg_dict[i]["text"])
+    return symbols_count
 
 # Получить from_id по имени (названию чата)
 def get_from_id(name, msg_dict):
-    pass
+    for i in range(0, len(msg_dict) - 1):
+        if msg_dict[i]["from"] == name:
+            return msg_dict[i]["from_id"]
 
 # Путь к папке Загрузки текущего пользователя
 def get_download_path():
