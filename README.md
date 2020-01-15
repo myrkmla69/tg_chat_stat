@@ -1,4 +1,4 @@
-# Statistic of Personal Chats Telegram &middot; [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg?style=flat-square)](https://github.com/andrey18106/tg_chat_stat/blob/master/LICENSE)
+# Statistic of Personal Chats Telegram &middot; [![GitHub license](https://img.shields.io/badge/license-ISC-blue.svg?style=flat-square)](https://github.com/andrey18106/tg_chat_stat/blob/master/LICENSE)
 > For now only Windows is currently supported.
 
 To analyze chats, you need to [export your data](https://telegram.org/blog/export-and-more) (only personal chats without files) from Telegram Desktop (JSON) and select export from the list in program.
