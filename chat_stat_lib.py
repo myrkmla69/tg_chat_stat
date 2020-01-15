@@ -6,8 +6,9 @@ import re
 # Получить from_id по имени (названию чата)
 def get_from_id(name, msg_dict):
     for i in range(0, len(msg_dict) - 1):
-        if msg_dict[i]["from"] == name:
-            return msg_dict[i]["from_id"]
+        if "from" in msg_dict[i]:
+            if msg_dict[i]["from"] == name:
+                return msg_dict[i]["from_id"]
 
 # Количество сообщений от пользователя (from_id)
 def count_msg_from(from_id, msg_dict):
