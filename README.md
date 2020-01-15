@@ -31,7 +31,7 @@ There is some list of tasks is needed to do:
 
 - [x] Search and select export files
 - [x] The number of messages from each of the participants and in total;
-- [x] Number of characters in messages from each of the partocopants and in total;
+- [x] Number of characters in messages from each of the participants and in total;
 - [x] Number of individual words from each of the participants and in total;
 - [x] Number of voice messages from each of the participants and in total;
 - [x] Number of round videos from each of the participants and in total;
