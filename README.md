@@ -15,7 +15,7 @@ In command line (`Win + R -> cmd`):
 pip install pyinstaller
 ```
 
-Next we clone the repository and compiling the console application using pyinstaller.
+Next we clone the repository and compiling the console application using `pyinstaller`.
 
 ```shell
 git clone https://github.com/andrey18106/tg_chat_stat.git
