@@ -1,6 +1,6 @@
 # Statistic of Personal Chats Telegram
 
-To analyze chats, you need to export your data (only personal chats without files) from Telegram Desktop (JSON) and select export from the list in program.
+To analyze chats, you need to [export your data](https://telegram.org/blog/export-and-more) (only personal chats without files) from Telegram Desktop (JSON) and select export from the list in program.
 
 ## Tasks
 
