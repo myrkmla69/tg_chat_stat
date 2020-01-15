@@ -2,7 +2,12 @@
 
 import os
 import re
-import time
+
+# Получить from_id по имени (названию чата)
+def get_from_id(name, msg_dict):
+    for i in range(0, len(msg_dict) - 1):
+        if msg_dict[i]["from"] == name:
+            return msg_dict[i]["from_id"]
 
 # Количество сообщений от пользователя (from_id)
 def count_msg_from(from_id, msg_dict):
@@ -30,11 +35,23 @@ def count_msg_symbols_from(from_id, msg_dict):
             symbols_count += len(msg_dict[i]["text"])
     return symbols_count
 
-# Получить from_id по имени (названию чата)
-def get_from_id(name, msg_dict):
+# Количество слов в чате
+def count_msg_words(msg_dict):
+    words_count = 0
     for i in range(0, len(msg_dict) - 1):
-        if msg_dict[i]["from"] == name:
-            return msg_dict[i]["from_id"]
+        if msg_dict[i]["text"] != "":
+            word_list = str(msg_dict[i]["text"]).split()
+            words_count += len(word_list)
+    return words_count
+
+# Количество слов в чате от пользователя (from_id)
+def count_msg_words_from(from_id, msg_dict):
+    words_count = 0
+    for i in range(0, len(msg_dict) - 1):
+        if msg_dict[i]["text"] != "" and msg_dict[i]["from_id"] == from_id:
+            word_list = str(msg_dict[i]["text"]).split()
+            words_count += len(word_list)
+    return words_count
 
 # Количество голосовых сообщений
 def count_voice_msgs(msg_dict):
@@ -76,7 +93,7 @@ def count_round_video_msgs_from(from_id, msg_dict):
 
 # Путь к папке Загрузки текущего пользователя
 def get_download_path():
-    """Returns the default downloads path for linux or windows"""
+    """Returns the default downloads path for Linux or Windows"""
     if os.name == 'nt':
         import winreg
         sub_key = r'SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Shell Folders'
@@ -115,3 +132,6 @@ def get_path_to_file():
                 return tg_download_path + "\\" + tg_download_dirs[selected_export_file] + "\\result.json"
         else:
             return ""
+    else:
+        print("Sorry, for now only Windows is currently supported")
+        input('Press ENTER to exit\n')

@@ -27,9 +27,9 @@ if path_to_file != "":
                 "from_id": lib.get_from_id(chat_list[i]["name"], chat_list[i]["messages"])
             }
 
-    is_active = True
+    is_running = True
     # Цикл работы программулины
-    while is_active:
+    while is_running:
         
         print("\nВыберите действие:")
         print("1. Выбрать чат")
@@ -41,7 +41,7 @@ if path_to_file != "":
             
             print("Список чатов:")
             for key in chat_names:
-                print(str(key) + '.', chat_names[key]["name"])
+                print(str(key) + '.', chat_names[key]["name"] + f" (" + str(chat_names[key]["from_id"]) + ")")
             
             selected_chat = input("Введите номер чата для получения информации:\n-> ")
 
@@ -50,21 +50,30 @@ if path_to_file != "":
             selected_chat_count = len(chat_list[selected_chat_number]["messages"])
 
             print("\nСтатистика по выбранному чату (", chat_names[int(selected_chat)]["name"], "):\n")
-            print("Всего сообщений:", selected_chat_count)
-            print("Всего символов:", lib.count_chat_sybmols(selected_chat_dict))
-            print("Всего голосовых сообщений:", lib.count_voice_msgs(selected_chat_dict))
-            print("Всего круглых-видео-сообщений:", lib.count_round_video_msgs(selected_chat_dict))
-            print("Количество сообщений от " + user["first_name"] + " " + user["last_name"] + ":", lib.count_msg_from(user["user_id"], selected_chat_dict))
-            print("Количество сообщений от " + chat_list[selected_chat_number]["name"] + ":", selected_chat_count - lib.count_msg_from(user["user_id"], selected_chat_dict))
-            print("Количество символов от " + user["first_name"] + " " + user["last_name"] + ":", lib.count_msg_symbols_from(user["user_id"], selected_chat_dict))
-            print("Количество символов от " + chat_list[selected_chat_number]["name"] + ":", lib.count_msg_symbols_from(chat_names[int(selected_chat)]["from_id"], selected_chat_dict))
-            print("Количество голосовых сообщений от " + user["first_name"] + " " + user["last_name"] + ":", lib.count_voice_msgs_from(user["user_id"], selected_chat_dict))
-            print("Количество голосовых сообщений от " + chat_list[selected_chat_number]["name"] + ":", lib.count_voice_msgs_from(chat_names[int(selected_chat)]["from_id"], selected_chat_dict))
-            print("Количество круглых-видео-сообщений от " + user["first_name"] + " " + user["last_name"] + ":", lib.count_round_video_msgs_from(user["user_id"], selected_chat_dict))
-            print("Количество круглых-видео-сообщений от " + chat_list[selected_chat_number]["name"] + ":", lib.count_round_video_msgs_from(chat_names[int(selected_chat)]["from_id"], selected_chat_dict))
+
+            print("Всего сообщений:", "{:,}".format(selected_chat_count).replace(",", " "))
+            print("Всего символов:", "{:,}".format(lib.count_chat_sybmols(selected_chat_dict)).replace(",", " "))
+            print("Всего слов:", "{:,}".format(lib.count_msg_words(selected_chat_dict)).replace(",", " "))
+            print("Всего голосовых сообщений:", "{:,}".format(lib.count_voice_msgs(selected_chat_dict)).replace(",", " "))
+            print("Всего круглых-видео-сообщений:", "{:,}".format(lib.count_round_video_msgs(selected_chat_dict)).replace(",", " "))
+
+            print("Количество сообщений от " + user["first_name"] + " " + user["last_name"] + ":", "{:,}".format(lib.count_msg_from(user["user_id"], selected_chat_dict)).replace(",", " "))
+            print("Количество сообщений от " + chat_list[selected_chat_number]["name"] + ":", "{:,}".format(selected_chat_count - lib.count_msg_from(user["user_id"], selected_chat_dict)).replace(",", " "))
+
+            print("Количество символов от " + user["first_name"] + " " + user["last_name"] + ":", "{:,}".format(lib.count_msg_symbols_from(user["user_id"], selected_chat_dict)).replace(",", " "))
+            print("Количество символов от " + chat_list[selected_chat_number]["name"] + ":", "{:,}".format(lib.count_msg_symbols_from(chat_names[int(selected_chat)]["from_id"], selected_chat_dict)).replace(",", " "))
+            
+            print("Количество слов от " + user["first_name"] + " " + user["last_name"] + ":", "{:,}".format(lib.count_msg_words_from(user["user_id"], selected_chat_dict)).replace(",", " "))
+            print("Количество слов от " + chat_list[selected_chat_number]["name"] + ":", "{:,}".format(lib.count_msg_words_from(chat_names[int(selected_chat)]["from_id"], selected_chat_dict)).replace(",", " "))
+
+            print("Количество голосовых сообщений от " + user["first_name"] + " " + user["last_name"] + ":", "{:,}".format(lib.count_voice_msgs_from(user["user_id"], selected_chat_dict)).replace(",", " "))
+            print("Количество голосовых сообщений от " + chat_list[selected_chat_number]["name"] + ":", "{:,}".format(lib.count_voice_msgs_from(chat_names[int(selected_chat)]["from_id"], selected_chat_dict)).replace(",", " "))
+
+            print("Количество круглых-видео-сообщений от " + user["first_name"] + " " + user["last_name"] + ":", "{:,}".format(lib.count_round_video_msgs_from(user["user_id"], selected_chat_dict)).replace(",", " "))
+            print("Количество круглых-видео-сообщений от " + chat_list[selected_chat_number]["name"] + ":", "{:,}".format(lib.count_round_video_msgs_from(chat_names[int(selected_chat)]["from_id"], selected_chat_dict)).replace(",", " "))
 
         elif int(_input) == 0:
-            is_active = False
+            is_running = False
 else:
     print("Экспортируйте данные из Telegram Desktop в формате JSON без дополнительных файлов (фото, видео, аудио и т.д.)")
     input('Press ENTER to exit\n')
