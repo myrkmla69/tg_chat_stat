@@ -1,6 +1,29 @@
-# Statistic of Personal Chats Telegram
+# Statistic of Personal Chats Telegram &middot; [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg?style=flat-square)](https://github.com/andrey18106/tg_chat_stat/blob/master/LICENSE)
+> For now only Windows is currently supported.
 
 To analyze chats, you need to [export your data](https://telegram.org/blog/export-and-more) (only personal chats without files) from Telegram Desktop (JSON) and select export from the list in program.
+
+## Getting started
+
+A quick introduction of the minimal setup you need to get running.
+
+If you already installed [python](https://www.python.org/downloads/) you need to install `pyinstaller` to compile (*.exe) the current verison of the console application.
+
+In command line (`Win + R -> cmd`):
+
+```shell
+pip install pyinstaller
+```
+
+Next we clone the repository and compiling the console application using pyinstaller.
+
+```shell
+git clone https://github.com/andrey18106/tg_chat_stat.git
+cd tg_chat_stat/
+pyinstaller -F tg_chat_stat.py
+```
+
+Key `-F` creates a one-file bundled executable.
 
 ## Tasks
 
