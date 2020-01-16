@@ -108,10 +108,49 @@ def count_msg_replies_from(from_id, msg_dict):
             reply_count += 1
     return reply_count
 
+# Количество точек/запятых/слэшей/дефисов/двоеточий/знаков вопроса/восклицательных знаков
+def get_marks_count(msg_dict):
+    popular_marks = {
+        0: {
+            "mark": ".",
+            "count": 0
+        },
+        1: {
+            "mark": ",",
+            "count": 0
+        },
+        2: {
+            "mark": "/",
+            "count": 0
+        },
+        3: {
+            "mark": "-",
+            "count": 0
+        },
+        4: {
+            "mark": ":",
+            "count": 0
+        },
+        5: {
+            "mark": "?",
+            "count": 0
+        },
+        6: {
+            "mark": "!",
+            "count": 0
+        }
+    }
+
+    for i in range(0, len(msg_dict) - 1):
+        if msg_dict[i]["text"] != "":
+            msg_list = str(msg_dict[i]["text"])
+            for j in range(0, len(popular_marks) - 1):
+                if popular_marks[j]["mark"] in set(msg_list):
+                    popular_marks[j]["count"] += msg_list.count(popular_marks[j]["mark"])
+    return popular_marks
 
 # Количество популярных фраз ("ок", "дад", "нит", "хорошо", "шо")
-def get_popular_phrases(msg_dict):
-    phrases_count = 0
+def get_phrases_count(msg_dict):
     popular_phrases = {
        0: { 
            "phrase": "ок",

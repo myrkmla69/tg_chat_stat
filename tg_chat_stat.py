@@ -47,8 +47,9 @@ if path_to_file != "":
 
             selected_chat_number = chat_names[int(selected_chat)]["number"] # Выбранный номер чата, соответствующий номеру в файле
             selected_chat_dict = chat_list[selected_chat_number]["messages"] # Словарь сообщений выбраного чата
-            selected_chat_count = len(chat_list[selected_chat_number]["messages"])
-            selected_chat_popular_phrases = lib.get_popular_phrases(selected_chat_dict) # Количество популярных фраз
+            selected_chat_count = len(chat_list[selected_chat_number]["messages"]) # Количество сообщений в чате
+            selected_chat_popular_phrases = lib.get_phrases_count(selected_chat_dict) # Количество популярных фраз
+            selected_chat_popular_marks = lib.get_marks_count(selected_chat_dict) # Количество знаков препинания
             
 
             print("\nСтатистика по выбранному чату (", chat_names[int(selected_chat)]["name"], "):\n")
@@ -85,6 +86,10 @@ if path_to_file != "":
             print("Популярные фразы:\n")
             for i in range(0, len(selected_chat_popular_phrases) - 1):
                 print("\"" + selected_chat_popular_phrases[i]["phrase"] + "\":", "{:,}".format(selected_chat_popular_phrases[i]["count"]))
+
+            print("\nКоличество знаков препинания:")
+            for i in range(0, len(selected_chat_popular_marks) - 1):
+                print("\"" + selected_chat_popular_marks[i]["mark"] + "\":", "{:,}".format(selected_chat_popular_marks[i]["count"]))
 
         elif int(_input) == 0:
             is_running = False
