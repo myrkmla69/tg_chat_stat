@@ -38,6 +38,6 @@ There is some list of tasks is needed to do:
 - [ ] Number of periods / commas / slashes / hyphens / colons / question marks / exclamation marks;
 - [x] Number of replies (messages that are sent to another);
 - [ ] Number of popular words: “ok”, “dad”, “nit”, “good”, “sho”;
-- [ ] The average number of characters in the message;
-- [ ] The average number of words in a message;
-- [ ] The average number of messages per day.
+- [x] The average number of characters in the message;
+- [x] The average number of words in a message;
+- [x] The average number of messages per day.
