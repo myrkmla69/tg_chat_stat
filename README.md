@@ -36,7 +36,7 @@ There is some list of tasks is needed to do:
 - [x] Number of voice messages from each of the participants and in total;
 - [x] Number of round videos from each of the participants and in total;
 - [ ] Number of periods / commas / slashes / hyphens / colons / question marks / exclamation marks;
-- [ ] Number of replies (messages that are sent to another);
+- [x] Number of replies (messages that are sent to another);
 - [ ] Number of popular words: “ok”, “dad”, “nit”, “good”, “sho”;
 - [ ] The average number of characters in the message;
 - [ ] The average number of words in a message;
