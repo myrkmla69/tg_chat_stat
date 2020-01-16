@@ -92,6 +92,22 @@ def count_round_video_msgs_from(from_id, msg_dict):
                     video_msg_count += 1
     return video_msg_count
 
+# Количество ответов на сообщения
+def count_msg_replies(msg_dict):
+    reply_count = 0
+    for i in range(0, len(msg_dict) - 1):
+        if "reply_to_message_id" in msg_dict[i]:
+            reply_count += 1
+    return reply_count
+
+# Количество ответов на сообщения от пользователя (from_id)
+def count_msg_replies_from(from_id, msg_dict):
+    reply_count = 0
+    for i in range(0, len(msg_dict) - 1):
+        if "reply_to_message_id" in msg_dict[i] and msg_dict[i]["from_id"] == from_id:
+            reply_count += 1
+    return reply_count
+
 # Путь к папке Загрузки текущего пользователя
 def get_download_path():
     """Returns the default downloads path for Linux or Windows"""

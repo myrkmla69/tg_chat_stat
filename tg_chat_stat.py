@@ -56,21 +56,25 @@ if path_to_file != "":
             print("Всего слов:", "{:,}".format(lib.count_msg_words(selected_chat_dict)).replace(",", " "))
             print("Всего голосовых сообщений:", "{:,}".format(lib.count_voice_msgs(selected_chat_dict)).replace(",", " "))
             print("Всего круглых-видео-сообщений:", "{:,}".format(lib.count_round_video_msgs(selected_chat_dict)).replace(",", " "))
+            print("Всего ответов на сообщения (replies):", "{:,}".format(lib.count_msg_replies(selected_chat_dict)).replace(",", " ") + "\n")
 
             print("Количество сообщений от " + user["first_name"] + " " + user["last_name"] + ":", "{:,}".format(lib.count_msg_from(user["user_id"], selected_chat_dict)).replace(",", " "))
-            print("Количество сообщений от " + chat_list[selected_chat_number]["name"] + ":", "{:,}".format(selected_chat_count - lib.count_msg_from(user["user_id"], selected_chat_dict)).replace(",", " "))
+            print("Количество сообщений от " + chat_list[selected_chat_number]["name"] + ":", "{:,}".format(selected_chat_count - lib.count_msg_from(user["user_id"], selected_chat_dict)).replace(",", " ") + "\n")
 
             print("Количество символов от " + user["first_name"] + " " + user["last_name"] + ":", "{:,}".format(lib.count_msg_symbols_from(user["user_id"], selected_chat_dict)).replace(",", " "))
-            print("Количество символов от " + chat_list[selected_chat_number]["name"] + ":", "{:,}".format(lib.count_msg_symbols_from(chat_names[int(selected_chat)]["from_id"], selected_chat_dict)).replace(",", " "))
+            print("Количество символов от " + chat_list[selected_chat_number]["name"] + ":", "{:,}".format(lib.count_msg_symbols_from(chat_names[int(selected_chat)]["from_id"], selected_chat_dict)).replace(",", " ") + "\n")
             
             print("Количество слов от " + user["first_name"] + " " + user["last_name"] + ":", "{:,}".format(lib.count_msg_words_from(user["user_id"], selected_chat_dict)).replace(",", " "))
-            print("Количество слов от " + chat_list[selected_chat_number]["name"] + ":", "{:,}".format(lib.count_msg_words_from(chat_names[int(selected_chat)]["from_id"], selected_chat_dict)).replace(",", " "))
+            print("Количество слов от " + chat_list[selected_chat_number]["name"] + ":", "{:,}".format(lib.count_msg_words_from(chat_names[int(selected_chat)]["from_id"], selected_chat_dict)).replace(",", " ") + "\n")
 
             print("Количество голосовых сообщений от " + user["first_name"] + " " + user["last_name"] + ":", "{:,}".format(lib.count_voice_msgs_from(user["user_id"], selected_chat_dict)).replace(",", " "))
-            print("Количество голосовых сообщений от " + chat_list[selected_chat_number]["name"] + ":", "{:,}".format(lib.count_voice_msgs_from(chat_names[int(selected_chat)]["from_id"], selected_chat_dict)).replace(",", " "))
+            print("Количество голосовых сообщений от " + chat_list[selected_chat_number]["name"] + ":", "{:,}".format(lib.count_voice_msgs_from(chat_names[int(selected_chat)]["from_id"], selected_chat_dict)).replace(",", " ") + "\n")
 
             print("Количество круглых-видео-сообщений от " + user["first_name"] + " " + user["last_name"] + ":", "{:,}".format(lib.count_round_video_msgs_from(user["user_id"], selected_chat_dict)).replace(",", " "))
-            print("Количество круглых-видео-сообщений от " + chat_list[selected_chat_number]["name"] + ":", "{:,}".format(lib.count_round_video_msgs_from(chat_names[int(selected_chat)]["from_id"], selected_chat_dict)).replace(",", " "))
+            print("Количество круглых-видео-сообщений от " + chat_list[selected_chat_number]["name"] + ":", "{:,}".format(lib.count_round_video_msgs_from(chat_names[int(selected_chat)]["from_id"], selected_chat_dict)).replace(",", " ") + "\n")
+            
+            print("Количество ответов на сообщения (replies) от " + user["first_name"] + " " + user["last_name"] + ":", "{:,}".format(lib.count_msg_replies_from(user["user_id"], selected_chat_dict)).replace(",", " "))
+            print("Количество ответов на сообщения (replies) от " + chat_list[selected_chat_number]["name"] + ":", "{:,}".format(lib.count_msg_replies_from(chat_names[int(selected_chat)]["from_id"], selected_chat_dict)).replace(",", " ") + "\n")
 
         elif int(_input) == 0:
             is_running = False
