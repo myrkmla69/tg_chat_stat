@@ -108,6 +108,53 @@ def count_msg_replies_from(from_id, msg_dict):
             reply_count += 1
     return reply_count
 
+
+# Количество популярных фраз
+# def count_popular_phrases(msg_dict):
+#     phrases_count = 0
+#     popular_phrases = {
+#        1: "ok",
+#        2: "шо"
+#     }
+#     for i in range(0, len(msg_dict) - 1):
+
+# Среднее количество символ в сообщении
+def count_msg_avg_len(msg_dict):
+    text_msg_count = 0
+    symbols_count = 0
+    for i in range(0, len(msg_dict) - 1):
+        if msg_dict[i]["text"] != "":
+            text_msg_count += 1
+            symbols_count += len(msg_dict[i]["text"])
+    return symbols_count / text_msg_count
+
+# Среднее количество слов в сообщении
+def count_msg_avg_words(msg_dict):
+    text_msg_count = 0
+    words_count = 0          
+    for i in range(0, len(msg_dict) - 1):
+        if msg_dict[i]["text"] != "":
+            text_msg_count += 1
+            words_count += len(str(msg_dict[i]["text"]).split())
+    return words_count / text_msg_count
+
+# Среднее количество сообщений в день
+def count_avg_msgs_per_day(msg_dict):
+    days_dict = dict()
+
+    # Отбираем дни в словарь
+    for i in range(0, len(msg_dict) - 1):
+        curr_msg_date = str(msg_dict[i]["date"][0:10])
+        if not curr_msg_date in days_dict:
+            days_dict[curr_msg_date] = 0
+    
+    for i in range(0, len(msg_dict) - 1):
+        curr_msg_date = str(msg_dict[i]["date"][0:10])
+        if curr_msg_date in days_dict:
+            days_dict[curr_msg_date] += 1
+
+    return len(msg_dict) / len(days_dict)
+
 # Путь к папке Загрузки текущего пользователя
 def get_download_path():
     """Returns the default downloads path for Linux or Windows"""

@@ -57,6 +57,10 @@ if path_to_file != "":
             print("Всего голосовых сообщений:", "{:,}".format(lib.count_voice_msgs(selected_chat_dict)).replace(",", " "))
             print("Всего круглых-видео-сообщений:", "{:,}".format(lib.count_round_video_msgs(selected_chat_dict)).replace(",", " "))
             print("Всего ответов на сообщения (replies):", "{:,}".format(lib.count_msg_replies(selected_chat_dict)).replace(",", " ") + "\n")
+            
+            print("Среднее количество символов в сообщении:", "{:.0f}".format(lib.count_msg_avg_len(selected_chat_dict)))
+            print("Среднее количество слов в сообщении:", "{:.0f}".format(lib.count_msg_avg_words(selected_chat_dict)))
+            print("Среднее количество сообщений в день:", "{:.0f}".format(lib.count_avg_msgs_per_day(selected_chat_dict)) + "\n")
 
             print("Количество сообщений от " + user["first_name"] + " " + user["last_name"] + ":", "{:,}".format(lib.count_msg_from(user["user_id"], selected_chat_dict)).replace(",", " "))
             print("Количество сообщений от " + chat_list[selected_chat_number]["name"] + ":", "{:,}".format(selected_chat_count - lib.count_msg_from(user["user_id"], selected_chat_dict)).replace(",", " ") + "\n")
