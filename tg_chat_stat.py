@@ -85,11 +85,11 @@ if path_to_file != "":
 
             print("Популярные фразы:\n")
             for i in range(0, len(selected_chat_popular_phrases) - 1):
-                print("\"" + selected_chat_popular_phrases[i]["phrase"] + "\":", "{:,}".format(selected_chat_popular_phrases[i]["count"]))
+                print("\"" + selected_chat_popular_phrases[i]["phrase"] + "\":", "{:,}".format(selected_chat_popular_phrases[i]["count"]).replace(",", " "))
 
             print("\nКоличество знаков препинания:")
             for i in range(0, len(selected_chat_popular_marks) - 1):
-                print("\"" + selected_chat_popular_marks[i]["mark"] + "\":", "{:,}".format(selected_chat_popular_marks[i]["count"]))
+                print("\"" + selected_chat_popular_marks[i]["mark"] + "\":", "{:,}".format(selected_chat_popular_marks[i]["count"]).replace(",", " "))
 
         elif int(_input) == 0:
             is_running = False
