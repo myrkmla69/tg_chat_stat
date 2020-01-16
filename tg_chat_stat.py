@@ -23,8 +23,8 @@ if path_to_file != "":
             counter += 1
             chat_names[counter] = {
                 "number": i,
-                "name": chat_list[i]["name"],
-                "from_id": lib.get_from_id(chat_list[i]["name"], chat_list[i]["messages"])
+                "name": lib.get_participant_name(user["first_name"] + " " + user["last_name"], chat_list[i]["messages"]),
+                "from_id": lib.get_from_id(lib.get_participant_name(user["first_name"] + " " + user["last_name"], chat_list[i]["messages"]), chat_list[i]["messages"])
             }
 
     is_running = True

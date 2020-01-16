@@ -10,6 +10,13 @@ def get_from_id(name, msg_dict):
             if msg_dict[i]["from"] == name:
                 return msg_dict[i]["from_id"]
 
+# Получить корректное имя собеседника
+def get_participant_name(curr_user, msg_dict):
+    for i in range(0, len(msg_dict) - 1):
+        if "from" in msg_dict[i]:
+            if msg_dict[i]["from"] != curr_user:
+                return msg_dict[i]["from"]
+
 # Количество сообщений от пользователя (from_id)
 def count_msg_from(from_id, msg_dict):
     msg_counter = 0
