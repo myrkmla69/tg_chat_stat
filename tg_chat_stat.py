@@ -48,6 +48,8 @@ if path_to_file != "":
             selected_chat_number = chat_names[int(selected_chat)]["number"] # Выбранный номер чата, соответствующий номеру в файле
             selected_chat_dict = chat_list[selected_chat_number]["messages"] # Словарь сообщений выбраного чата
             selected_chat_count = len(chat_list[selected_chat_number]["messages"])
+            selected_chat_popular_phrases = lib.get_popular_phrases(selected_chat_dict) # Количество популярных фраз
+            
 
             print("\nСтатистика по выбранному чату (", chat_names[int(selected_chat)]["name"], "):\n")
 
@@ -79,6 +81,10 @@ if path_to_file != "":
             
             print("Количество ответов на сообщения (replies) от " + user["first_name"] + " " + user["last_name"] + ":", "{:,}".format(lib.count_msg_replies_from(user["user_id"], selected_chat_dict)).replace(",", " "))
             print("Количество ответов на сообщения (replies) от " + chat_list[selected_chat_number]["name"] + ":", "{:,}".format(lib.count_msg_replies_from(chat_names[int(selected_chat)]["from_id"], selected_chat_dict)).replace(",", " ") + "\n")
+
+            print("Популярные фразы:\n")
+            for i in range(0, len(selected_chat_popular_phrases) - 1):
+                print("\"" + selected_chat_popular_phrases[i]["phrase"] + "\":", "{:,}".format(selected_chat_popular_phrases[i]["count"]))
 
         elif int(_input) == 0:
             is_running = False

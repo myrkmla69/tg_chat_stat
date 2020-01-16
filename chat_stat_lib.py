@@ -109,14 +109,39 @@ def count_msg_replies_from(from_id, msg_dict):
     return reply_count
 
 
-# Количество популярных фраз
-# def count_popular_phrases(msg_dict):
-#     phrases_count = 0
-#     popular_phrases = {
-#        1: "ok",
-#        2: "шо"
-#     }
-#     for i in range(0, len(msg_dict) - 1):
+# Количество популярных фраз ("ок", "дад", "нит", "хорошо", "шо")
+def get_popular_phrases(msg_dict):
+    phrases_count = 0
+    popular_phrases = {
+       0: { 
+           "phrase": "ок",
+           "count": 0 
+       },
+       1: {
+           "phrase": "дад",
+           "count": 0 
+       },
+       2: {
+           "phrase": "нит",
+           "count": 0 
+       },
+       3: {
+           "phrase": "хорошо",
+           "count": 0 
+       },
+       4: {
+           "phrase": "шо",
+           "count": 0 
+       }
+    }
+
+    for i in range(0, len(msg_dict) - 1):
+        if msg_dict[i]["text"] != "":
+            msg_list = str(msg_dict[i]["text"]).lower().split()
+            for j in range(0, len(popular_phrases) - 1):
+                if popular_phrases[j]["phrase"] in msg_list:
+                    popular_phrases[j]["count"] += msg_list.count(popular_phrases[j]["phrase"])
+    return popular_phrases
 
 # Среднее количество символ в сообщении
 def count_msg_avg_len(msg_dict):
