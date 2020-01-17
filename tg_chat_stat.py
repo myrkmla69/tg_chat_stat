@@ -18,7 +18,7 @@ if path_to_file != "":
     counter = 0 # Счетчик чатов
 
     # Получаем названия чатов и заносим в другой список
-    for i in range(0, len(chat_list) - 1):
+    for i in range(0, len(chat_list)):
         if chat_list[i]["type"] == "personal_chat": # Если это ЛС (диалог)
             counter += 1
             chat_names[counter] = {

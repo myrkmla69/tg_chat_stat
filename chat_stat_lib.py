@@ -5,14 +5,14 @@ import re
 
 # Получить from_id по имени (названию чата)
 def get_from_id(name, msg_dict):
-    for i in range(0, len(msg_dict) - 1):
+    for i in range(0, len(msg_dict)):
         if "from" in msg_dict[i]:
             if msg_dict[i]["from"] == name:
                 return msg_dict[i]["from_id"]
 
 # Получить корректное имя собеседника
 def get_participant_name(curr_user, msg_dict):
-    for i in range(0, len(msg_dict) - 1):
+    for i in range(0, len(msg_dict)):
         if "from" in msg_dict[i]:
             if msg_dict[i]["from"] != curr_user:
                 return msg_dict[i]["from"]
@@ -21,7 +21,7 @@ def get_participant_name(curr_user, msg_dict):
 def count_msg_from(from_id, msg_dict):
     msg_counter = 0
     
-    for i in range(0, len(msg_dict) - 1):
+    for i in range(0, len(msg_dict)):
         if msg_dict[i]["from_id"] == from_id:
             msg_counter += 1
 
@@ -30,7 +30,7 @@ def count_msg_from(from_id, msg_dict):
 # Количество символов в чате
 def count_chat_sybmols(msg_dict):
     symbols_count = 0
-    for i in range(0, len(msg_dict) - 1):
+    for i in range(0, len(msg_dict)):
         if msg_dict[i]["text"] != "":
             symbols_count += len(msg_dict[i]["text"])
     return symbols_count
@@ -38,7 +38,7 @@ def count_chat_sybmols(msg_dict):
 # Количество символов в сообщениях от пользователя (from_id)
 def count_msg_symbols_from(from_id, msg_dict):
     symbols_count = 0
-    for i in range(0, len(msg_dict) - 1):
+    for i in range(0, len(msg_dict)):
         if msg_dict[i]["text"] != "" and msg_dict[i]["from_id"] == from_id:
             symbols_count += len(msg_dict[i]["text"])
     return symbols_count
@@ -46,7 +46,7 @@ def count_msg_symbols_from(from_id, msg_dict):
 # Количество слов в чате
 def count_msg_words(msg_dict):
     words_count = 0
-    for i in range(0, len(msg_dict) - 1):
+    for i in range(0, len(msg_dict)):
         if msg_dict[i]["text"] != "":
             word_list = str(msg_dict[i]["text"]).split()
             words_count += len(word_list)
@@ -55,7 +55,7 @@ def count_msg_words(msg_dict):
 # Количество слов в чате от пользователя (from_id)
 def count_msg_words_from(from_id, msg_dict):
     words_count = 0
-    for i in range(0, len(msg_dict) - 1):
+    for i in range(0, len(msg_dict)):
         if msg_dict[i]["text"] != "" and msg_dict[i]["from_id"] == from_id:
             word_list = str(msg_dict[i]["text"]).split()
             words_count += len(word_list)
@@ -64,7 +64,7 @@ def count_msg_words_from(from_id, msg_dict):
 # Количество голосовых сообщений
 def count_voice_msgs(msg_dict):
     audio_msg_count = 0
-    for i in range(0, len(msg_dict) - 1):
+    for i in range(0, len(msg_dict)):
         if "media_type" in msg_dict[i]:
             if msg_dict[i]["media_type"] == "voice_message":
                 audio_msg_count += 1
@@ -73,7 +73,7 @@ def count_voice_msgs(msg_dict):
 # Количество голосовых сообщений
 def count_voice_msgs_from(from_id, msg_dict):
     audio_msg_count = 0
-    for i in range(0, len(msg_dict) - 1):
+    for i in range(0, len(msg_dict)):
         if msg_dict[i]["from_id"] == from_id:
             if "media_type" in msg_dict[i]:
                 if msg_dict[i]["media_type"] == "voice_message":
@@ -83,7 +83,7 @@ def count_voice_msgs_from(from_id, msg_dict):
 # Количество видео-сообщений
 def count_round_video_msgs(msg_dict):
     video_msg_count = 0
-    for i in range(0, len(msg_dict) - 1):
+    for i in range(0, len(msg_dict)):
         if "media_type" in msg_dict[i]:
             if msg_dict[i]["media_type"] == "video_message":
                 video_msg_count += 1
@@ -92,7 +92,7 @@ def count_round_video_msgs(msg_dict):
 # Количество видео-сообщений от пользователя (from_id)
 def count_round_video_msgs_from(from_id, msg_dict):
     video_msg_count = 0
-    for i in range(0, len(msg_dict) - 1):
+    for i in range(0, len(msg_dict)):
         if msg_dict[i]["from_id"] == from_id:
             if "media_type" in msg_dict[i]:
                 if msg_dict[i]["media_type"] == "video_message":
@@ -102,7 +102,7 @@ def count_round_video_msgs_from(from_id, msg_dict):
 # Количество ответов на сообщения
 def count_msg_replies(msg_dict):
     reply_count = 0
-    for i in range(0, len(msg_dict) - 1):
+    for i in range(0, len(msg_dict)):
         if "reply_to_message_id" in msg_dict[i]:
             reply_count += 1
     return reply_count
@@ -110,7 +110,7 @@ def count_msg_replies(msg_dict):
 # Количество ответов на сообщения от пользователя (from_id)
 def count_msg_replies_from(from_id, msg_dict):
     reply_count = 0
-    for i in range(0, len(msg_dict) - 1):
+    for i in range(0, len(msg_dict)):
         if "reply_to_message_id" in msg_dict[i] and msg_dict[i]["from_id"] == from_id:
             reply_count += 1
     return reply_count
@@ -148,10 +148,10 @@ def get_marks_count(msg_dict):
         }
     }
 
-    for i in range(0, len(msg_dict) - 1):
+    for i in range(0, len(msg_dict)):
         if msg_dict[i]["text"] != "":
             msg_list = str(msg_dict[i]["text"])
-            for j in range(0, len(popular_marks) - 1):
+            for j in range(0, len(popular_marks)):
                 if popular_marks[j]["mark"] in set(msg_list):
                     popular_marks[j]["count"] += msg_list.count(popular_marks[j]["mark"])
     return popular_marks
@@ -181,10 +181,10 @@ def get_phrases_count(msg_dict):
        }
     }
 
-    for i in range(0, len(msg_dict) - 1):
+    for i in range(0, len(msg_dict)):
         if msg_dict[i]["text"] != "":
             msg_list = str(msg_dict[i]["text"]).lower().split()
-            for j in range(0, len(popular_phrases) - 1):
+            for j in range(0, len(popular_phrases)):
                 if popular_phrases[j]["phrase"] in msg_list:
                     popular_phrases[j]["count"] += msg_list.count(popular_phrases[j]["phrase"])
     return popular_phrases
@@ -193,7 +193,7 @@ def get_phrases_count(msg_dict):
 def count_msg_avg_len(msg_dict):
     text_msg_count = 0
     symbols_count = 0
-    for i in range(0, len(msg_dict) - 1):
+    for i in range(0, len(msg_dict)):
         if msg_dict[i]["text"] != "":
             text_msg_count += 1
             symbols_count += len(msg_dict[i]["text"])
@@ -203,7 +203,7 @@ def count_msg_avg_len(msg_dict):
 def count_msg_avg_words(msg_dict):
     text_msg_count = 0
     words_count = 0          
-    for i in range(0, len(msg_dict) - 1):
+    for i in range(0, len(msg_dict)):
         if msg_dict[i]["text"] != "":
             text_msg_count += 1
             words_count += len(str(msg_dict[i]["text"]).split())
@@ -214,12 +214,12 @@ def count_avg_msgs_per_day(msg_dict):
     days_dict = dict()
 
     # Отбираем дни в словарь
-    for i in range(0, len(msg_dict) - 1):
+    for i in range(0, len(msg_dict)):
         curr_msg_date = str(msg_dict[i]["date"][0:10])
         if not curr_msg_date in days_dict:
             days_dict[curr_msg_date] = 0
     
-    for i in range(0, len(msg_dict) - 1):
+    for i in range(0, len(msg_dict)):
         curr_msg_date = str(msg_dict[i]["date"][0:10])
         if curr_msg_date in days_dict:
             days_dict[curr_msg_date] += 1
