@@ -1,3 +1,5 @@
+![Logo of the project](./logo.png)
+
 # Statistic of Personal Chats Telegram &middot; [![GitHub license](https://img.shields.io/badge/license-ISC-blue.svg?style=flat-square)](https://github.com/andrey18106/tg_chat_stat/blob/master/LICENSE)
 > For now only Windows is currently supported.
 
