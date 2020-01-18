@@ -7,7 +7,7 @@ import re
 def get_from_id(name, msg_dict):
     for i in range(0, len(msg_dict)):
         if "from" in msg_dict[i]:
-            if msg_dict[i]["from"] == name:
+            if msg_dict[i]["from"] == name and "from_id" in msg_dict[i]:
                 return msg_dict[i]["from_id"]
 
 # Получить корректное имя собеседника
@@ -22,9 +22,9 @@ def count_msg_from(from_id, msg_dict):
     msg_counter = 0
     
     for i in range(0, len(msg_dict)):
-        if msg_dict[i]["from_id"] == from_id:
-            msg_counter += 1
-
+        if "from_id" in msg_dict[i]:
+            if msg_dict[i]["from_id"] == from_id:
+                msg_counter += 1
     return msg_counter
 
 # Количество символов в чате
@@ -74,10 +74,11 @@ def count_voice_msgs(msg_dict):
 def count_voice_msgs_from(from_id, msg_dict):
     audio_msg_count = 0
     for i in range(0, len(msg_dict)):
-        if msg_dict[i]["from_id"] == from_id:
-            if "media_type" in msg_dict[i]:
-                if msg_dict[i]["media_type"] == "voice_message":
-                    audio_msg_count += 1
+        if "from_id" in msg_dict[i]:
+            if msg_dict[i]["from_id"] == from_id:
+                if "media_type" in msg_dict[i]:
+                    if msg_dict[i]["media_type"] == "voice_message":
+                        audio_msg_count += 1
     return audio_msg_count
 
 # Количество видео-сообщений
@@ -93,10 +94,11 @@ def count_round_video_msgs(msg_dict):
 def count_round_video_msgs_from(from_id, msg_dict):
     video_msg_count = 0
     for i in range(0, len(msg_dict)):
-        if msg_dict[i]["from_id"] == from_id:
-            if "media_type" in msg_dict[i]:
-                if msg_dict[i]["media_type"] == "video_message":
-                    video_msg_count += 1
+        if "from_id" in msg_dict[i]:
+            if msg_dict[i]["from_id"] == from_id:
+                if "media_type" in msg_dict[i]:
+                    if msg_dict[i]["media_type"] == "video_message":
+                        video_msg_count += 1
     return video_msg_count
 
 # Количество ответов на сообщения
