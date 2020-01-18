@@ -7,11 +7,11 @@ import chat_stat_lib as lib
 path_to_file = lib.get_path_to_file()
 
 if path_to_file != "":
-    with open(path_to_file, "r", encoding="utf8") as file:
+    with open(path_to_file["path"], "r", encoding="utf8") as file:
         data = json.load(file)
 
     user = data["personal_information"] # Информация о пользователе (чей экспорт)
-    print("Exported data of " + user["first_name"] + " " + user["last_name"] + " (" + user["username"] + ")" + " from Telegram successfully load!")
+    print("Exported data (" + "{:.2f}".format(path_to_file["size"]).replace(",", " ") + "MB) of " + user["first_name"] + " " + user["last_name"] + " (" + user["username"] + ")" + " from Telegram successfully load!")
 
     chat_list = data["chats"]["list"] # Все данные чатов из файла
     chat_names = dict() # Список чатов

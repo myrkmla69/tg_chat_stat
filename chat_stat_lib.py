@@ -264,7 +264,11 @@ def get_path_to_file():
             selected_export_file = int(input("-> "))
             
             if selected_export_file in range(1, tg_dir_count + 1):
-                return tg_download_path + "\\" + tg_download_dirs[selected_export_file] + "\\result.json"
+                return {
+                    "path": tg_download_path + "\\" + tg_download_dirs[selected_export_file] + "\\result.json",
+                    "size": os.path.getsize(tg_download_path + "\\" + tg_download_dirs[selected_export_file] + "\\result.json") / 1024 / 1024
+                }
+                
         else:
             return ""
     else:
