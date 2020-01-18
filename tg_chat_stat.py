@@ -19,10 +19,11 @@ if path_to_file != "":
 
     # Получаем названия чатов и заносим в другой список
     for i in range(0, len(chat_list)):
-        if chat_list[i]["type"] == "personal_chat": # Если это ЛС (диалог)
+        if chat_list[i]["type"] == "personal_chat" and not chat_list[i]["id"] in chat_list: # Если это ЛС (диалог)
             counter += 1
             chat_names[counter] = {
                 "number": i,
+                "chat_id": chat_list[i]["id"],
                 "name": lib.get_participant_name(user["first_name"] + " " + user["last_name"], chat_list[i]["messages"]),
                 "from_id": lib.get_from_id(lib.get_participant_name(user["first_name"] + " " + user["last_name"], chat_list[i]["messages"]), chat_list[i]["messages"])
             }
