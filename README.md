@@ -25,8 +25,10 @@ cd tg_chat_stat/
 pyinstaller -F --icon=icon.ico tg_chat_stat.py
 ```
 
-Key `-F` creates a one-file bundled executable.
-Key `--icon=icon.ico` sets the icon.
+| Key      | Description                           |
+| -------- | ------------------------------------- |
+| `-F`     | creates a one-file bundled executable |
+| `--icon` | sets the icon                         |
 
 ## Tasks
 
