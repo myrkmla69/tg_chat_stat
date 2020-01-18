@@ -43,4 +43,5 @@ There is some list of tasks is needed to do:
 - [x] Number of popular words: “ok”, “dad”, “nit”, “good”, “sho”;
 - [x] The average number of characters in the message;
 - [x] The average number of words in a message;
-- [x] The average number of messages per day.
+- [x] The average number of messages per day;
+- [ ] Ability to configure popular phrases.
