@@ -22,10 +22,11 @@ Next we clone the repository and compiling the console application using `pyinst
 ```shell
 git clone https://github.com/andrey18106/tg_chat_stat.git
 cd tg_chat_stat/
-pyinstaller -F tg_chat_stat.py
+pyinstaller -F --icon=icon.ico tg_chat_stat.py
 ```
 
 Key `-F` creates a one-file bundled executable.
+Key `--icon=icon.ico` sets the icon.
 
 ## Tasks
 
